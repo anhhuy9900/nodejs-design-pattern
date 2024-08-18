@@ -1,10 +1,13 @@
 /**
- * The Creator class declares the factory method that is supposed to return an
- * object of a Export class. The Creator's subclasses usually provide the
- * implementation of this method.
- * * https://refactoring.guru/design-patterns/factory-method
- * 
+ * Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, 
+ * but allows subclasses to alter the type of objects that will be created.
  * !Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.
+ * * https://refactoring.guru/design-patterns/factory-method
+ */
+
+/**
+ * The Creator class declares the factory method that is supposed to return an object of a Export class. 
+ * The Creator's subclasses usually provide the implementation of this method.
  */
 abstract class CreatorExportFactory {
     /**
