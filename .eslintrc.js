@@ -2,18 +2,13 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    es2022: true
+    es2022: true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    "prettier/prettier": "error",
-    "no-console": "warn",
-    "@typescript-eslint/no-unused-vars": ["error"]
-  }
+    'prettier/prettier': 'error',
+    '@typescript-eslint/method-signature-style': ['error', 'method'],
+  },
 };

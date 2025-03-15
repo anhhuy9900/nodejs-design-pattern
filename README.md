@@ -54,4 +54,5 @@ This project is used by the following patterns:
 - https://refactoring.guru/
 - https://sbcode.net/typescript/factory/
 - https://en.wikipedia.org/wiki/Design_Patterns
+- https://github.com/manikbajaj/typescript-design-patterns?tab=readme-ov-file#object-oriented-programming
 
