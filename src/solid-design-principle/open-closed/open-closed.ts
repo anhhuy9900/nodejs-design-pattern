@@ -4,7 +4,7 @@
 
 
 interface IService {
-    fetchingData(): void;
+  fetchingData(): void;
 }
 
 /**
@@ -14,17 +14,17 @@ interface IService {
  */
 class CollectDataProvider {
 
-    protected readonly service: IService;
+  protected readonly service: IService;
 
-    constructor(service: IService) {
-        this.service = service;
-    }
+  constructor(service: IService) {
+    this.service = service;
+  }
 
-    getDataToSaveDB() {
-        const data = this.service.fetchingData();
-        console.log('The function used to store data to Database');
-        console.log('getDataToSaveDB ===> ', data);
-    }
+  getDataToSaveDB() {
+    const data = this.service.fetchingData();
+    console.log('The function used to store data to Database');
+    console.log('getDataToSaveDB ===> ', data);
+  }
 }
 
 /**
@@ -33,24 +33,24 @@ class CollectDataProvider {
 
 class GoogleProvider implements IService {
 
-    private url = 'google.com';
+  private url = 'google.com';
 
-    fetchingData() {
-        // Call API to google to fetch necessary data
+  fetchingData() {
+    // Call API to google to fetch necessary data
 
-        return `Data from Google with url ${this.url}`;
-    }
+    return `Data from Google with url ${this.url}`;
+  }
 }
 
 class FacebookProvider implements IService {
 
-    private url = 'facebook.com';
+  private url = 'facebook.com';
 
-    fetchingData() {
-        // Call API to google to fetch necessary data
+  fetchingData() {
+    // Call API to google to fetch necessary data
 
-        return `Data from Facebook with url ${this.url}`;
-    }
+    return `Data from Facebook with url ${this.url}`;
+  }
 }
 
 /**
@@ -68,7 +68,7 @@ facebook.getDataToSaveDB();
 
 /**
  * we can't changes the fetching url in class because it's private variable in class
- * ! With the closed statement: 
+ * ! With the closed statement:
  * ! Some context in OOP, we need to set properties, methods are private or final to avoid the client changing itself value and affected to the my class or library
  */
- // google.url = 'new url'; //!Error
+// google.url = 'new url'; //!Error

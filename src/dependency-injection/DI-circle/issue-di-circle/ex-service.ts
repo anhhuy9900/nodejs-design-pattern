@@ -2,7 +2,7 @@ import { ServiceA } from './service-a';
 import { ServiceB } from './service-b';
 
 const serviceA = new ServiceA();
-serviceA.execute()
+serviceA.execute();
 
 const serviceB = new ServiceB();
-serviceB.execute()
+serviceB.execute();

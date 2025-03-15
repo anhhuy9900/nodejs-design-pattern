@@ -1,32 +1,32 @@
 /**
- * Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, 
+ * Factory Method is a creational design pattern that provides an interface for creating objects in a superclass,
  * but allows subclasses to alter the type of objects that will be created.
  * !Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.
  * * https://refactoring.guru/design-patterns/factory-method
  */
 
 /**
- * The Creator class declares the factory method that is supposed to return an object of a Export class. 
+ * The Creator class declares the factory method that is supposed to return an object of a Export class.
  * The Creator's subclasses usually provide the implementation of this method.
  */
 abstract class CreatorExportFactory {
-    /**
-     * Note that the Creator may also provide some default implementation of the
-     * factory method.
-     */
-    public abstract factoryExport(): Export;
+  /**
+   * Note that the Creator may also provide some default implementation of the
+   * factory method.
+   */
+  public abstract factoryExport(): Export;
 
-    /**
-     * Also note that, despite its name, the Creator's primary responsibility is
-     * not creating products. Usually, it contains some core business logic that
-     * relies on Product objects, returned by the factory method. Subclasses can
-     * indirectly change that business logic by overriding the factory method
-     * and returning a different type of product from it.
-     */
-    public exportData(): string {
-        const exportObj = this.factoryExport();
-        return 'Export data from : ' + exportObj.export();
-    }
+  /**
+   * Also note that, despite its name, the Creator's primary responsibility is
+   * not creating products. Usually, it contains some core business logic that
+   * relies on Product objects, returned by the factory method. Subclasses can
+   * indirectly change that business logic by overriding the factory method
+   * and returning a different type of product from it.
+   */
+  public exportData(): string {
+    const exportObj = this.factoryExport();
+    return 'Export data from : ' + exportObj.export();
+  }
 }
 
 /**
@@ -34,26 +34,25 @@ abstract class CreatorExportFactory {
  * implement.
  */
 interface Export {
-    export(): string;
+  export(): string;
 }
-
 
 /**
  * Concrete Export provide various implementations of the Export interface.
  */
 class ExportDataJson implements Export {
-    public export(): string {
-        return 'Export Json';
-    }
+  public export(): string {
+    return 'Export Json';
+  }
 }
 
 /**
  * Concrete Export provide various implementations of the Export interface.
  */
 class ExportDataHTML implements Export {
-    public export(): string {
-        return 'Export HTML';
-    }
+  public export(): string {
+    return 'Export HTML';
+  }
 }
 
 /**
@@ -61,9 +60,9 @@ class ExportDataHTML implements Export {
  * resulting export's type.
  */
 class ConcreteExportJson extends CreatorExportFactory {
-    public factoryExport(): Export {
-        return new ExportJson();
-    }
+  public factoryExport(): Export {
+    return new ExportJson();
+  }
 }
 
 /**
@@ -71,9 +70,9 @@ class ConcreteExportJson extends CreatorExportFactory {
  * resulting export's type.
  */
 class ConcreteExportHTML extends CreatorExportFactory {
-    public factoryExport(): Export {
-        return new ExportHTML();
-    }
+  public factoryExport(): Export {
+    return new ExportHTML();
+  }
 }
 
 /**
@@ -81,22 +80,22 @@ class ConcreteExportHTML extends CreatorExportFactory {
  * its base interface. As long as the client keeps working with the creator via
  * the base interface, you can pass it any creator's subclass.
  */
-const exportData = function(type: string) {
-    switch (type) {
-        case 'json':
-            const creator = new ConcreteExportJson();
-            console.log(creator.exportData());
-            break;
-        case 'html':
-            const creator2 = new ConcreteExportHTML();
-            console.log(creator2.exportData());
-            break;
-    }
-}
+const exportData = function (type: string) {
+  switch (type) {
+    case 'json':
+      const creator = new ConcreteExportJson();
+      console.log(creator.exportData());
+      break;
+    case 'html':
+      const creator2 = new ConcreteExportHTML();
+      console.log(creator2.exportData());
+      break;
+  }
+};
 exportData('json');
 
-const exportData2 = function(exportObj: CreatorExportFactory) {
-    console.log(exportObj.exportData());
-}
+const exportData2 = function (exportObj: CreatorExportFactory) {
+  console.log(exportObj.exportData());
+};
 exportData2(new ConcreteExportHTML());
 exportData2(new ConcreteExportJson());

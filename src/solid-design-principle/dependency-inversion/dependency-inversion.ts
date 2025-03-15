@@ -4,23 +4,23 @@
  */
 
 class ConnectionDB {
-    connection() {
-        return "Connected with database"
-    }
+  connection() {
+    return 'Connected with database';
+  }
 }
 
 class BaseConnection {
-    instanceDB: ConnectionDB
+  instanceDB: ConnectionDB;
 
-    constructor(instanceDB: ConnectionDB) {
-        this.instanceDB = instanceDB;
-    }
+  constructor(instanceDB: ConnectionDB) {
+    this.instanceDB = instanceDB;
+  }
 
-    saveDb() {
-        if (this.instanceDB.connection()) {
-            // Save data to DB
-        }
+  saveDb() {
+    if (this.instanceDB.connection()) {
+      // Save data to DB
     }
+  }
 }
 
 /**
@@ -31,23 +31,24 @@ class BaseConnection {
  */
 
 interface ConnectionDBInterface {
-    connection(): boolean;
-    disConnection(): boolean;
+  connection(): boolean;
+
+  disConnection(): boolean;
 }
 
 class NewBaseConnection {
-    instanceDB: ConnectionDBInterface
+  instanceDB: ConnectionDBInterface;
 
-    constructor(instanceDB: ConnectionDBInterface) {
-        this.instanceDB = instanceDB;
+  constructor(instanceDB: ConnectionDBInterface) {
+    this.instanceDB = instanceDB;
+  }
+
+  saveDb() {
+    if (this.instanceDB.connection()) {
+      // Save data to DB
     }
 
-    saveDb() {
-        if (this.instanceDB.connection()) {
-            // Save data to DB
-        }
-
-        // And then we will save we need to disconnection
-        this.instanceDB.disConnection()
-    }
+    // And then we will save we need to disconnection
+    this.instanceDB.disConnection();
+  }
 }

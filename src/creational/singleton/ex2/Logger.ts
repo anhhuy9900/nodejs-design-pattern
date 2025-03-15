@@ -1,43 +1,38 @@
 class Logger {
+  static instance: any;
+  logs: (string | Date | object)[];
 
-    static instance: any;
+  constructor() {
+    this.logs = [];
+  }
 
-    getInstance() {
-        return Logger.instance;
-    }
+  get count() {
+    return this.logs.length;
+  }
 
-    logs: (string | Date | object)[];
+  getInstance() {
+    return Logger.instance;
+  }
 
-    constructor() {
-        this.logs = [];
-    }
-
-    get count() {
-        return this.logs.length;
-    }
-
-    log(message: string): void {
-        const timestamp = new Date().toISOString();
-        this.logs.push({ message, timestamp });
-        console.log(`${timestamp} - ${message}`);
-    }
-
+  log(message: string): void {
+    const timestamp = new Date().toISOString();
+    this.logs.push({ message, timestamp });
+    console.log(`${timestamp} - ${message}`);
+  }
 }
-
 
 class Singleton {
-    static instance: any;
+  static instance: any;
 
-    constructor() {
-        if (!Singleton.instance) {
-            Singleton.instance = new Logger();
-        }
+  constructor() {
+    if (!Singleton.instance) {
+      Singleton.instance = new Logger();
     }
+  }
 
-    getInstance() {
-        return Singleton.instance;
-    }
-
+  getInstance() {
+    return Singleton.instance;
+  }
 }
 
-export { Logger , Singleton}
+export { Logger, Singleton };

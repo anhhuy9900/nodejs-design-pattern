@@ -1,15 +1,15 @@
-import { injectable, inject } from 'inversify';
+import { inject, injectable } from 'inversify';
 import { IMessageService } from './interfaces';
 
 @injectable()
 export class MessageController {
-    private messageService: IMessageService;
+  private messageService: IMessageService;
 
-    constructor(@inject("MessageService") messageService: IMessageService) {
-        this.messageService = messageService;
-    }
+  constructor(@inject('MessageService') messageService: IMessageService) {
+    this.messageService = messageService;
+  }
 
-    public getMessage(): string {
-        return this.messageService.getMessage();
-    }
+  public getMessage(): string {
+    return this.messageService.getMessage();
+  }
 }

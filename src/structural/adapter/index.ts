@@ -5,13 +5,13 @@
  * Use the pattern when you want to reuse several existing subclasses that lack some common functionality that can’t be added to the superclass.
  */
 interface PaymentNormal {
-    toBuy(): string;
+  toBuy(): string;
 }
 
 class OrderPayment implements PaymentNormal {
-    toBuy(): string {
-        return 'Buy a product from payment normal method save data'
-    }
+  toBuy(): string {
+    return 'Buy a product from payment normal method save data';
+  }
 }
 
 const buy = new OrderPayment();
@@ -22,28 +22,26 @@ console.log(buy.toBuy());
  */
 
 class ServicePayPal {
-    buy() {
-        return 'Buy a product from payment paypal service'
-    }
+  buy() {
+    return 'Buy a product from payment paypal service';
+  }
 }
 
 class AdapterPayment extends OrderPayment {
-    private paymentPayPal: ServicePayPal
+  private paymentPayPal: ServicePayPal;
 
-    constructor(paymentPayPal: ServicePayPal) {
-        super();
-        this.paymentPayPal = paymentPayPal;
-    }
+  constructor(paymentPayPal: ServicePayPal) {
+    super();
+    this.paymentPayPal = paymentPayPal;
+  }
 
-    toBuy() {
-        const buyPayPal = this.paymentPayPal.buy();
-        console.log(buyPayPal);
-        return super.toBuy();
-    }
+  toBuy() {
+    const buyPayPal = this.paymentPayPal.buy();
+    console.log(buyPayPal);
+    return super.toBuy();
+  }
 }
 
-const newPayment = new AdapterPayment(new ServicePayPal);
+const newPayment = new AdapterPayment(new ServicePayPal());
 console.log('##### Adapter ####');
 console.log(newPayment.toBuy());
-
-

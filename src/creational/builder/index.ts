@@ -9,87 +9,94 @@
 // The builder interface specifies methods for creating the
 // different parts of the create user objects.
 interface IUserProperty {
-    setFullName(val: string): this;
-    setEmail(val: string): this;
-    setUserName(val: string): this;
-    setPassword(val: string): this;
-    setStatus(val: boolean): this;
-    buildSignUp(val: string): object;
-    buildSignIn(val: string): object;
+  setFullName(val: string): this;
+
+  setEmail(val: string): this;
+
+  setUserName(val: string): this;
+
+  setPassword(val: string): this;
+
+  setStatus(val: boolean): this;
+
+  buildSignUp(val: string): object;
+
+  buildSignIn(val: string): object;
 }
 
 interface IUserSignInProperty {
-    userName: string;
-    password: string;
+  userName: string;
+  password: string;
 }
 
 interface IUserSignUpProperty {
-    fullName: string;
-    email: string;
-    userName: string;
-    password: string;
-    status: boolean;
+  fullName: string;
+  email: string;
+  userName: string;
+  password: string;
+  status: boolean;
 }
 
 /**
- * The concrete builder classes follow the builder interface and provide specific implementations of the building steps. 
+ * The concrete builder classes follow the builder interface and provide specific implementations of the building steps.
  * Your program may have several variations of builders, each implemented differently.
  */
 class UserBuilder implements IUserProperty {
-    protected fullName!: string;
-    protected email!: string;
-    protected userName!: string;
-    protected password!: string;
-    protected status!: boolean;
+  protected fullName!: string;
+  protected email!: string;
+  protected userName!: string;
+  protected password!: string;
+  protected status!: boolean;
 
-    setFullName(val: string) {
-        this.fullName = val;
-        return this;
-    }
+  setFullName(val: string) {
+    this.fullName = val;
+    return this;
+  }
 
-    setEmail(val: string) {
-        this.email = val;
-        return this;
-    }
+  setEmail(val: string) {
+    this.email = val;
+    return this;
+  }
 
-    setUserName(val: string) {
-        this.userName = val;
-        return this;
-    }
+  setUserName(val: string) {
+    this.userName = val;
+    return this;
+  }
 
-    setPassword(val: string) {
-        this.password = val;
-        return this;
-    }
+  setPassword(val: string) {
+    this.password = val;
+    return this;
+  }
 
-    setStatus(val: boolean) {
-        this.status = val;
-        return this;
-    }
+  setStatus(val: boolean) {
+    this.status = val;
+    return this;
+  }
 
-    buildSignUp(): IUserSignUpProperty {
-        return {
-            fullName: this.fullName,
-            email: this.email,
-            userName: this.userName,
-            password: this.password,
-            status: this.status,
-        };
-    }
-    buildSignIn(): IUserSignInProperty {
-        return {
-            userName: this.userName,
-            password: this.password,
-        };
-    }
+  buildSignUp(): IUserSignUpProperty {
+    return {
+      fullName: this.fullName,
+      email: this.email,
+      userName: this.userName,
+      password: this.password,
+      status: this.status,
+    };
+  }
+
+  buildSignIn(): IUserSignInProperty {
+    return {
+      userName: this.userName,
+      password: this.password,
+    };
+  }
 }
 
 const signUpBuilder = new UserBuilder()
-    .setFullName('John Doe')
-    .setEmail('test@email.com')
-    .setUserName('johndoe')
-    .setPassword('123456')
-    .setStatus(true);
+  .setFullName('John Doe')
+  .setEmail('test@email.com')
+  .setUserName('johndoe')
+  .setPassword('123456')
+  .setStatus(true);
 const userInfoSignUp = signUpBuilder.buildSignUp();
 console.log('User information to sign up ->  ', userInfoSignUp);
 

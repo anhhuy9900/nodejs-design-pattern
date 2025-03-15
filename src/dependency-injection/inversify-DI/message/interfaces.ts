@@ -1,3 +1,3 @@
 export interface IMessageService {
-    getMessage(): string;
+  getMessage(): string;
 }

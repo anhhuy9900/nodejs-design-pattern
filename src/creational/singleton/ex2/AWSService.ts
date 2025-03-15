@@ -2,12 +2,12 @@ class AWSConnect {
   service: string | null = null;
 
   connection() {
-    console.log("Connecting to AWS...");
+    console.log('Connecting to AWS...');
     return this;
   }
 
   getService() {
-    this.service = "SQS";
+    this.service = 'SQS';
     return this.service;
   }
 }
@@ -20,9 +20,9 @@ class AWSService {
       AWSService.instance = new AWSConnect().connection().getService();
     }
     if (!AWSService.instance) {
-      console.log("Can not connect to AWS");
+      console.log('Can not connect to AWS');
     } else {
-      console.log("Connected to AWS");
+      console.log('Connected to AWS');
     }
   }
 
@@ -31,7 +31,8 @@ class AWSService {
   }
 
   run() {
-    console.log("Running Service AWS : ", this.getInstance());
+    console.log('Running Service AWS : ', this.getInstance());
   }
 }
+
 export { AWSService };

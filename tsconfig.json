@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "strictFunctionTypes": false,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "target": "es6",
     "module": "commonjs",
@@ -10,7 +12,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules"
   ]

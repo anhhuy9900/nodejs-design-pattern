@@ -4,47 +4,44 @@
  */
 
 interface CollectionProviderAPIInterface {
-    callAPI(): string;
+  callAPI(): string;
 }
-
 
 // We create two classes override the factory method to change the
 // The facebook class used to call Facebook APi to get data
-class FacebookAPICollection implements CollectionProviderAPIInterface  {
+class FacebookAPICollection implements CollectionProviderAPIInterface {
+  constructor() {
+    // @TO-DO
+  }
 
-    constructor() {
-        // @TO-DO
-    }
+  callAPI() {
+    // @call API from facebook;
 
-    callAPI() {
-        // @call API from facebook;
-
-        return "Facebook Data";
-    }
+    return 'Facebook Data';
+  }
 }
 
-class GoogleAPICollection implements CollectionProviderAPIInterface  {
+class GoogleAPICollection implements CollectionProviderAPIInterface {
+  constructor() {
+    // @TO-DO
+  }
 
-    constructor() {
-        // @TO-DO
-    }
+  callAPI() {
+    // @call API from Google;
 
-    callAPI() {
-        // @call API from Google;
-
-        return "Google Data";
-    }
+    return 'Google Data';
+  }
 }
 
 function getDataProvider(type: string) {
-    switch(type) {
-        case 'google':
-            return new GoogleAPICollection().callAPI()
-        case 'facebook':
-            return new FacebookAPICollection().callAPI()
-        default:
-            return null;
-    }
+  switch (type) {
+    case 'google':
+      return new GoogleAPICollection().callAPI();
+    case 'facebook':
+      return new FacebookAPICollection().callAPI();
+    default:
+      return null;
+  }
 }
 
-getDataProvider('google')
+getDataProvider('google');
